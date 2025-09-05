@@ -1,0 +1,21 @@
+Source: ssh-tpm-agent
+Section: utils
+Priority: optional
+Maintainer: Perle Systems <psleng@perle.com>
+Build-Depends: debhelper-compat (= 13), dh-sequence-golang, golang-any, dh-golang, asciidoctor
+Standards-Version: 4.6.2
+Homepage: https://github.com/Foxboron/ssh-tpm-agent
+Rules-Requires-Root: no
+
+Package: ssh-tpm-agent
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: TPM-backed ssh-agent replacement
+ A minimal ssh-agent backed by TPM for secure key storage and authentication.
+ .
+ This package includes:
+  - ssh-tpm-agetn: The TPM agent itself
+  - ssh-tpm-keygen: TPM backed key generator
+  - ssh-tpm-add: Agent add helper
+  - ssh-tpm-hostkeys: Host Key helper
+

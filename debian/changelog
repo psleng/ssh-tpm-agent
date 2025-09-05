@@ -1,0 +1,6 @@
+ssh-tpm-agent (0.8.0) unstable; urgency=medium
+
+  * Initial release of ssh-tpm-agent and helper utilities for generating/managing sshd hostkeys in tpm backed storage.
+
+ -- Perle Systems <psleng@perle.com>  Fri, 05 Sep 2025 12:00:00 +0000
+
