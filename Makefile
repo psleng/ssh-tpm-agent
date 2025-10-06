@@ -6,6 +6,7 @@ MANDIR := $(PREFIX)/share/man
 BINS = $(filter-out %_test.go,$(notdir $(wildcard cmd/*)))
 TAG = $(shell git describe --abbrev=0 --tags)
 VERSION = $(shell git describe --abbrev=7 | sed 's/-/./g;s/^v//;')
+PATH := /opt/go/bin:$(PATH)
 
 MANPAGES = \
 	man/ssh-tpm-hostkeys.1 \
