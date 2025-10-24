@@ -1,0 +1,31 @@
+#!/usr/bin/make -f
+ 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export GOPATH := $(CURDIR)/.gopath 
+export GOCACHE := $(CURDIR)/.gocache 
+export HOME := $(CURDIR)/.home
+export GO111MODULE = on
+export CGO_ENABLED = 0
+
+%:
+	dh $@ --buildsystem=makefile
+ 
+override_dh_auto_build:
+	dh_auto_build -- VERBOSE=1
+ 
+override_dh_auto_clean:
+	rm -rf .gopath .gocache .home
+	dh_auto_clean
+
+override_dh_auto_install:
+	dh_auto_install -- PREFIX=/usr
+
+override_dh_auto_test:
+	@echo "Skipping tests during package builds"
+
+override_dh_installsystemduser:
+	@echo "Skipping dh_installsystemduser"
+
+override_dh_golang:
+	@echo "Skipping dh_golang"
+
