@@ -141,7 +141,7 @@ func doHostKeys(tpm transport.TPMCloser, outputFile string, ownerPassword []byte
 			if err != nil {
 				log.Fatal(err)
 			}
-			if err := os.WriteFile(pubkeyFilename, hkey.AuthorizedKey(), 0o600); err != nil {
+			if err := os.WriteFile(pubkeyFilename, hkey.AuthorizedKey(), 0o644); err != nil {
 				log.Fatal(err)
 			}
 			slog.Info("Wrote public key", slog.String("filename", pubkeyFilename))
@@ -159,7 +159,7 @@ func doHostKeys(tpm transport.TPMCloser, outputFile string, ownerPassword []byte
 				log.Fatal(err)
 			}
 
-			if err := os.WriteFile(pubkeyFilename, sshkey.AuthorizedKey(), 0o600); err != nil {
+			if err := os.WriteFile(pubkeyFilename, sshkey.AuthorizedKey(), 0o644); err != nil {
 				log.Fatal(err)
 			}
 
@@ -310,7 +310,7 @@ func doWrapWith(supportedECCBitsizes []int, wrap, wrapWith string, keyParentHand
 	if err != nil {
 		log.Fatal(err)
 	}
-	if err := os.WriteFile(pubkeyFilename, sshkey.AuthorizedKey(), 0o600); err != nil {
+	if err := os.WriteFile(pubkeyFilename, sshkey.AuthorizedKey(), 0o644); err != nil {
 		log.Fatal(err)
 	}
 }
@@ -698,7 +698,7 @@ func main() {
 	}
 	fmt.Printf("Your identification has been saved in %s\n", privatekeyFilename)
 	if writePubKey {
-		if err := os.WriteFile(pubkeyFilename, k.AuthorizedKey(), 0o600); err != nil {
+		if err := os.WriteFile(pubkeyFilename, k.AuthorizedKey(), 0o644); err != nil {
 			log.Fatal(err)
 		}
 		fmt.Printf("Your public key has been saved in %s\n", pubkeyFilename)
